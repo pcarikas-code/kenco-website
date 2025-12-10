@@ -9,15 +9,12 @@ export default function Footer() {
           <div>
             <h3 className="text-lg font-semibold mb-4">Contact Us</h3>
             <div className="space-y-2 text-sm">
-              <p className="font-medium">Kendyl</p>
+              <p className="font-medium">Kendyl Carikas</p>
               <p>
                 <span className="font-medium">m:</span> +64 (0)21 029 66718
               </p>
               <p>
-                <span className="font-medium">@:</span>{" "}
-                <a href="mailto:web@kenco.nz" className="hover:text-primary transition-colors">
-                  web@kenco.nz
-                </a>
+                <span className="font-medium">@:</span> web@kenco.nz
               </p>
             </div>
           </div>

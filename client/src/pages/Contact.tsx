@@ -121,7 +121,7 @@ export default function Contact() {
                       </div>
                       <div>
                         <p className="font-semibold text-secondary mb-1">Contact Person</p>
-                        <p className="text-muted-foreground">Kendyl</p>
+                        <p className="text-muted-foreground">Kendyl Carikas</p>
                       </div>
                     </div>
 
@@ -133,9 +133,7 @@ export default function Contact() {
                       </div>
                       <div>
                         <p className="font-semibold text-secondary mb-1">Mobile</p>
-                        <a href="tel:+64210296678" className="text-primary hover:underline">
-                          +64 (0)21 029 66718
-                        </a>
+                        <p className="text-muted-foreground">+64 (0)21 029 66718</p>
                       </div>
                     </div>
 
@@ -147,9 +145,7 @@ export default function Contact() {
                       </div>
                       <div>
                         <p className="font-semibold text-secondary mb-1">Email</p>
-                        <a href="mailto:web@kenco.nz" className="text-primary hover:underline">
-                          web@kenco.nz
-                        </a>
+                        <p className="text-muted-foreground">web@kenco.nz</p>
                       </div>
                     </div>
                   </CardContent>
