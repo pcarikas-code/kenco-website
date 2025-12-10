@@ -23,7 +23,6 @@ export default function Contact() {
     onSuccess: (data) => {
       toast.success(data.message);
       setFormData({ name: "", email: "", phone: "", message: "", website: "" });
-      sessionStorage.removeItem('formStartTime');
     },
     onError: (error) => {
       toast.error(error.message || "Failed to send message. Please try again.");
@@ -44,14 +43,6 @@ export default function Contact() {
     const now = Date.now();
     if (submittedAt && now - submittedAt < 3000) {
       toast.error("Please wait a moment before submitting again.");
-      return;
-    }
-    
-    // Time-based check (form must be filled for at least 2 seconds)
-    const formStartTime = sessionStorage.getItem('formStartTime');
-    if (formStartTime && now - parseInt(formStartTime) < 2000) {
-      // Likely a bot - silently reject
-      console.log("Spam detected: form filled too quickly");
       return;
     }
     
@@ -96,11 +87,6 @@ export default function Contact() {
                   <form 
                     onSubmit={handleSubmit} 
                     className="space-y-6"
-                    onFocus={() => {
-                      if (!sessionStorage.getItem('formStartTime')) {
-                        sessionStorage.setItem('formStartTime', Date.now().toString());
-                      }
-                    }}
                   >
                     <div className="space-y-2">
                       <Label htmlFor="name">Name *</Label>
