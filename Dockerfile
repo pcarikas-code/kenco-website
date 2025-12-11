@@ -35,6 +35,7 @@ COPY --from=builder /app/dist ./dist
 
 # Copy necessary runtime files
 COPY drizzle ./drizzle
+COPY drizzle.config.ts ./drizzle.config.ts
 COPY shared ./shared
 
 # Expose port
