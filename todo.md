@@ -7,11 +7,14 @@
 - [x] Test real AWS SES integration with actual credentials
 - [x] Fix email delivery issue and verify emails are received
 
-## Plesk Deployment
-- [x] Prepare project for Plesk deployment
-- [x] Create deployment scripts and documentation
-- [ ] Set up PostgreSQL database on Plesk
-- [ ] Configure environment variables in Plesk
-- [ ] Set up Node.js application in Plesk
-- [ ] Configure GitHub webhook for auto-deployment
-- [ ] Deploy and test live website on Plesk server
+## Docker Deployment on Plesk
+- [x] Create Docker configuration files (Dockerfile, docker-compose.yml, .dockerignore)
+- [x] Push Docker files to GitHub
+- [x] Install Docker and Portainer on Plesk server
+- [x] Clone code from GitHub to /opt/kenco-website
+- [x] Build Docker image via SSH
+- [ ] Create and start Docker container with environment variables
+- [ ] Run database migrations in container
+- [ ] Configure nginx reverse proxy in Plesk
+- [ ] Enable SSL certificate
+- [ ] Test live website at kenco.nz
