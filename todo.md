@@ -13,12 +13,17 @@
 - [x] Install Docker and Portainer on Plesk server
 - [x] Clone code from GitHub to /opt/kenco-website
 - [x] Build Docker image via SSH
-- [ ] Create and start Docker container with environment variables
-- [ ] Run database migrations in container
-- [ ] Configure nginx reverse proxy in Plesk
-- [ ] Enable SSL certificate
-- [ ] Test live website at kenco.nz
-- [ ] Fix Dockerfile to properly exclude dev dependencies from production runtime
-- [ ] Rebuild Docker image with fixed Dockerfile
-- [ ] Restart container and verify it runs successfully
-- [ ] Fix Dockerfile COPY path for client build output
+- [x] Create and start Docker container with environment variables
+- [x] Run database migrations in container
+- [x] Configure nginx reverse proxy in Plesk
+- [x] Enable SSL certificate
+- [x] Test live website at kenco.nz
+- [x] Fix Dockerfile to properly exclude dev dependencies from production runtime
+- [x] Rebuild Docker image with fixed Dockerfile
+- [x] Restart container and verify it runs successfully
+- [x] Fix Dockerfile COPY path for client build output
+- [x] Fix Dockerfile to copy drizzle.config.ts for database migrations
+- [x] Fix drizzle config to work in Docker container (convert .ts to .js or update package.json)
+- [x] Install pg (PostgreSQL driver) package for drizzle-kit
+- [x] Clear drizzle meta files and regenerate for PostgreSQL
+- [x] Convert drizzle schema from MySQL to PostgreSQL syntax
