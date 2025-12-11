@@ -10,7 +10,7 @@ WORKDIR /app
 # Copy package files
 COPY package*.json ./
 
-# Install dependencies (including devDependencies for build)
+# Install ALL dependencies (needed for build and runtime since we use --packages=external)
 RUN npm install
 
 # Copy source code
@@ -25,15 +25,16 @@ FROM node:22-alpine
 # Set working directory
 WORKDIR /app
 
-# Install production dependencies only
+# Copy package files and install ALL dependencies
+# Note: We need all deps because esbuild uses --packages=external
 COPY package*.json ./
-RUN npm install --production
+RUN npm install
 
 # Copy built application from builder stage
 COPY --from=builder /app/dist ./dist
-COPY --from=builder /app/client/public ./client/public
+COPY --from=builder /app/client/dist ./client/dist
 
-# Copy necessary config files
+# Copy necessary runtime files
 COPY drizzle ./drizzle
 COPY shared ./shared
 
