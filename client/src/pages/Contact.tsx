@@ -25,7 +25,22 @@ export default function Contact() {
       setFormData({ name: "", email: "", phone: "", message: "", website: "" });
     },
     onError: (error) => {
-      toast.error(error.message || "Failed to send message. Please try again.");
+      // Parse validation errors from tRPC
+      let errorMessage = "Failed to send message. Please try again.";
+      
+      try {
+        // Check if it's a validation error
+        const errorData = JSON.parse(error.message);
+        if (Array.isArray(errorData) && errorData.length > 0) {
+          // Extract the first validation error message
+          errorMessage = errorData[0].message || errorMessage;
+        }
+      } catch {
+        // If parsing fails, use the original error message
+        errorMessage = error.message || errorMessage;
+      }
+      
+      toast.error(errorMessage);
     },
   });
 

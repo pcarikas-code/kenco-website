@@ -36,3 +36,4 @@
 - [x] Change email FROM to web@kenco.nz and TO to kendyl.carikas@kenco.nz and peter.carikas@kenco.nz
 - [ ] Verify web@kenco.nz in AWS SES
 - [ ] Add SPF and DKIM records to prevent spam
+- [x] Add graceful error messages for contact form validation errors
