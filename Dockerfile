@@ -4,6 +4,12 @@
 # Stage 1: Build stage
 FROM node:22-alpine AS builder
 
+# Build arguments for Vite environment variables
+ARG VITE_APP_TITLE
+ARG VITE_APP_LOGO
+ARG VITE_ANALYTICS_ENDPOINT
+ARG VITE_ANALYTICS_WEBSITE_ID
+
 # Set working directory
 WORKDIR /app
 
@@ -15,6 +21,12 @@ RUN npm install
 
 # Copy source code
 COPY . .
+
+# Set environment variables for build
+ENV VITE_APP_TITLE=${VITE_APP_TITLE}
+ENV VITE_APP_LOGO=${VITE_APP_LOGO}
+ENV VITE_ANALYTICS_ENDPOINT=${VITE_ANALYTICS_ENDPOINT}
+ENV VITE_ANALYTICS_WEBSITE_ID=${VITE_ANALYTICS_WEBSITE_ID}
 
 # Build the application
 RUN npm run build

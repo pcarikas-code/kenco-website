@@ -30,3 +30,5 @@
 
 ## Production Issues
 - [ ] Fix "Invalid URL" JavaScript error on live website
+- [ ] Fix contact form email sending in production environment
+- [ ] Fix browser tab showing %VITE_APP_TITLE% instead of actual title
