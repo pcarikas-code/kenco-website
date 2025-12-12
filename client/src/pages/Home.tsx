@@ -47,8 +47,8 @@ export default function Home() {
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {/* Endurocide */}
-              <Link href="/services">
-                <Card className="border-2 hover:border-primary transition-colors cursor-pointer">
+              <Link href="/services" className="md:h-full">
+                <Card className="border-2 hover:border-primary transition-colors cursor-pointer h-full flex flex-col">
                 <CardHeader>
                   <div className="w-full h-24 flex items-center mb-4">
                     <img src="/endurocide-logo.jpg" alt="Endurocide" className="h-20 w-auto object-contain" />
@@ -58,7 +58,7 @@ export default function Home() {
                     Antimicrobial & Sporicidal Curtains
                   </CardDescription>
                 </CardHeader>
-                <CardContent>
+                <CardContent className="flex-1">
                   <p className="text-muted-foreground">
                     Disposable hospital curtains effective against spores, bacteria, mycobacteria and fungi.
                   </p>
@@ -67,8 +67,8 @@ export default function Home() {
               </Link>
 
               {/* ShadeCare */}
-              <Link href="/services">
-                <Card className="border-2 hover:border-primary transition-colors cursor-pointer">
+              <Link href="/services" className="md:h-full">
+                <Card className="border-2 hover:border-primary transition-colors cursor-pointer h-full flex flex-col">
                 <CardHeader>
                   <div className="w-full h-24 flex items-center mb-4">
                     <img src="/shadecare-logo.png" alt="ShadeCare" className="h-20 w-auto object-contain" />
@@ -78,7 +78,7 @@ export default function Home() {
                     Vertical & Roller Blinds
                   </CardDescription>
                 </CardHeader>
-                <CardContent>
+                <CardContent className="flex-1">
                   <p className="text-muted-foreground">
                     Full range of window furnishings that protect and enhance the healing environment and patient well-being.
                   </p>
@@ -87,8 +87,8 @@ export default function Home() {
               </Link>
 
               {/* Installations */}
-              <Link href="/services">
-                <Card className="border-2 hover:border-primary transition-colors cursor-pointer">
+              <Link href="/services" className="md:h-full">
+                <Card className="border-2 hover:border-primary transition-colors cursor-pointer h-full flex flex-col">
                 <CardHeader>
                   <div className="w-full h-24 flex items-center mb-4">
                     <img src="/installations-icon.png" alt="Installations" className="h-20 w-auto object-contain" />
@@ -98,7 +98,7 @@ export default function Home() {
                     Country Wide
                   </CardDescription>
                 </CardHeader>
-                <CardContent>
+                <CardContent className="flex-1">
                   <p className="text-muted-foreground">
                     Installation can be arranged for all major town and city centres.
                   </p>

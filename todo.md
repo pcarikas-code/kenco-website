@@ -51,3 +51,4 @@
 - [ ] Add Google Search Console verification (requires verification file)
 - [ ] Create og-image.jpg for social sharing
 - [ ] Optimize images with alt tags
+- [x] Make service cards equal height on desktop (flexible on mobile)
