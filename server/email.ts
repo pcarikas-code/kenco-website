@@ -20,7 +20,7 @@ export async function sendContactEmail(params: SendContactEmailParams): Promise<
   
   const fromEmail = process.env.SES_FROM_EMAIL || "web@kenco.nz";
   const toEmails = [
-    "web@kenco.nz",
+    "kendyl.carikas@kenco.nz",
     "peter.carikas@kenco.nz"
   ];
 
@@ -40,6 +40,7 @@ This email was sent from the Kenco website contact form.
 
   const command = new SendEmailCommand({
     Source: fromEmail,
+    ReplyToAddresses: [email], // Reply goes to the person who submitted the form
     Destination: {
       ToAddresses: toEmails,
     },

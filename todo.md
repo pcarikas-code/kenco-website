@@ -32,3 +32,7 @@
 - [ ] Fix "Invalid URL" JavaScript error on live website
 - [ ] Fix contact form email sending in production environment
 - [ ] Fix browser tab showing %VITE_APP_TITLE% instead of actual title
+- [x] Add scroll to top when navigating between pages
+- [x] Change email FROM to web@kenco.nz and TO to kendyl.carikas@kenco.nz and peter.carikas@kenco.nz
+- [ ] Verify web@kenco.nz in AWS SES
+- [ ] Add SPF and DKIM records to prevent spam
