@@ -3,6 +3,7 @@ import { getSessionCookieOptions } from "./_core/cookies";
 import { systemRouter } from "./_core/systemRouter";
 import { publicProcedure, router } from "./_core/trpc";
 import { sendContactEmail } from "./email";
+import { checkRateLimit, recordSubmission } from "./rateLimit";
 import { z } from "zod";
 
 export const appRouter = router({
@@ -29,12 +30,25 @@ export const appRouter = router({
           message: z.string().min(10, "Message must be at least 10 characters"),
         })
       )
-      .mutation(async ({ input }) => {
+      .mutation(async ({ input, ctx }) => {
+        // Get client IP address
+        const ip = ctx.req.ip || ctx.req.socket.remoteAddress || "unknown";
+        
+        // Check rate limits
+        const rateLimitCheck = checkRateLimit(ip, input.email);
+        if (!rateLimitCheck.allowed) {
+          throw new Error(rateLimitCheck.reason || "Rate limit exceeded");
+        }
+        
+        // Send email
         const success = await sendContactEmail(input);
         
         if (!success) {
           throw new Error("Failed to send email. Please try again later.");
         }
+        
+        // Record successful submission
+        recordSubmission(ip, input.email);
         
         return {
           success: true,

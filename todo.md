@@ -37,3 +37,4 @@
 - [ ] Verify web@kenco.nz in AWS SES
 - [ ] Add SPF and DKIM records to prevent spam
 - [x] Add graceful error messages for contact form validation errors
+- [x] Add server-side rate limiting to prevent spam and bot abuse
