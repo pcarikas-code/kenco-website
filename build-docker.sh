@@ -11,10 +11,13 @@ if [ ! -f .env ]; then
     exit 1
 fi
 
-# Load environment variables from .env
-export $(grep -v '^#' .env | grep -v '^$' | xargs)
+# Extract VITE variables from .env file (only lines starting with VITE_)
+VITE_APP_TITLE=$(grep "^VITE_APP_TITLE=" .env | cut -d '=' -f2- | tr -d '"' | tr -d "'")
+VITE_APP_LOGO=$(grep "^VITE_APP_LOGO=" .env | cut -d '=' -f2- | tr -d '"' | tr -d "'")
+VITE_ANALYTICS_ENDPOINT=$(grep "^VITE_ANALYTICS_ENDPOINT=" .env | cut -d '=' -f2- | tr -d '"' | tr -d "'")
+VITE_ANALYTICS_WEBSITE_ID=$(grep "^VITE_ANALYTICS_WEBSITE_ID=" .env | cut -d '=' -f2- | tr -d '"' | tr -d "'")
 
-# Extract VITE variables
+# Set defaults if not found
 VITE_APP_TITLE="${VITE_APP_TITLE:-App}"
 VITE_APP_LOGO="${VITE_APP_LOGO:-/logo.svg}"
 VITE_ANALYTICS_ENDPOINT="${VITE_ANALYTICS_ENDPOINT:-}"
