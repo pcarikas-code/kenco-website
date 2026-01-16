@@ -97,10 +97,11 @@ To add new images to this folder:
 
 ### 4. Rebuild and Deploy
 
-After uploading the files, deploy using the deployment script:
+After uploading the files, build and deploy:
 
 ```bash
 cd /opt/kenco-website
+./build.sh
 ./deploy.sh
 ```
 

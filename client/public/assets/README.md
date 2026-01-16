@@ -38,7 +38,7 @@ To add new images to this folder:
 
 1. Place the image file in `client/public/assets/images/`
 2. Commit and push to GitHub
-3. Deploy to production: `cd /opt/kenco-website && git pull origin main && ./deploy.sh`
+3. Deploy to production: `cd /opt/kenco-website && git pull origin main && ./build.sh && ./deploy.sh`
 4. Access via `https://kenco.nz/assets/images/[filename]`
 
 ## Best Practices
