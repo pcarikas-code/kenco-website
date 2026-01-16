@@ -97,12 +97,11 @@ To add new images to this folder:
 
 ### 4. Rebuild and Deploy
 
-After uploading the files, rebuild the Docker container:
+After uploading the files, deploy using the deployment script:
 
 ```bash
 cd /opt/kenco-website
-./build-docker.sh
-./deploy-docker.sh
+./deploy.sh
 ```
 
 ### 5. Verify Deployment
