@@ -98,3 +98,9 @@
 - [ ] Create og-image.jpg for social sharing (1200x630px)
 - [ ] Add customer testimonials section
 - [ ] Expand product pages with specifications and case studies
+
+### Add Email Signature Image (Current Task)
+- [x] Copy kenco_email_sig.png to assets/images folder
+- [x] Update assets README with new image
+- [ ] Push to GitHub
+- [ ] Deploy to production

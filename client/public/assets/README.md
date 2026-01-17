@@ -26,6 +26,10 @@ https://kenco.nz/assets/images/[filename]
   - URL: `https://kenco.nz/assets/images/shadecare-logo.png`
   - Use for: Product marketing, email campaigns
 
+- **`kenco_email_sig.png`** - Combined Kenco + Endurocide logo for email signatures
+  - URL: `https://kenco.nz/assets/images/kenco_email_sig.png`
+  - Use for: Email signatures, combined branding
+
 ## Email Signature Example
 
 ```html
