@@ -99,8 +99,16 @@
 - [ ] Add customer testimonials section
 - [ ] Expand product pages with specifications and case studies
 
-### Add Email Signature Image (Current Task)
+### Add Email Signature Image
 - [x] Copy kenco_email_sig.png to assets/images folder
 - [x] Update assets README with new image
+- [x] Commit to repository
+- [ ] Deploy to production (manual step)
+
+### Create Assets Directory Index (Current Task)
+- [x] Create index.html in assets/images folder
+- [x] Display list of all available images with thumbnails
+- [x] Include image names, sizes, and direct links
+- [x] Add copy-to-clipboard functionality
 - [ ] Push to GitHub
 - [ ] Deploy to production

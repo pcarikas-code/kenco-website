@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kenco Brand Assets - Image Library</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e8eef5 100%);
+            padding: 2rem;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+        }
+        
+        header {
+            border-bottom: 2px solid #0d9488;
+            padding-bottom: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        h1 {
+            color: #0d9488;
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .subtitle {
+            color: #64748b;
+            font-size: 1rem;
+        }
+        
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .image-card {
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            background: #f8fafc;
+        }
+        
+        .image-card:hover {
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            transform: translateY(-2px);
+        }
+        
+        .image-preview {
+            width: 100%;
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: white;
+            border-radius: 6px;
+            margin-bottom: 1rem;
+            padding: 1rem;
+        }
+        
+        .image-preview img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+        
+        .image-info {
+            margin-bottom: 1rem;
+        }
+        
+        .image-name {
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 0.5rem;
+            word-break: break-all;
+        }
+        
+        .image-meta {
+            font-size: 0.875rem;
+            color: #64748b;
+            margin-bottom: 0.25rem;
+        }
+        
+        .image-url {
+            font-size: 0.875rem;
+            color: #0d9488;
+            word-break: break-all;
+            background: #f1f5f9;
+            padding: 0.5rem;
+            border-radius: 4px;
+            margin-top: 0.5rem;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        
+        .image-url:hover {
+            background: #e2e8f0;
+        }
+        
+        .copy-btn {
+            display: inline-block;
+            background: #0d9488;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 0.875rem;
+            margin-top: 0.5rem;
+            cursor: pointer;
+            border: none;
+            transition: background 0.2s;
+            width: 100%;
+            text-align: center;
+        }
+        
+        .copy-btn:hover {
+            background: #0f766e;
+        }
+        
+        .copy-btn:active {
+            background: #115e59;
+        }
+        
+        .copied {
+            background: #059669 !important;
+        }
+        
+        footer {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid #e2e8f0;
+            text-align: center;
+            color: #64748b;
+            font-size: 0.875rem;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem;
+            }
+            
+            .container {
+                padding: 1.5rem;
+            }
+            
+            h1 {
+                font-size: 1.5rem;
+            }
+            
+            .image-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Kenco Brand Assets</h1>
+            <p class="subtitle">Official logos and images for email signatures, presentations, and marketing materials</p>
+        </header>
+        
+        <div class="image-grid">
+            <div class="image-card">
+                <div class="image-preview">
+                    <img src="logo.png" alt="Kenco Logo">
+                </div>
+                <div class="image-info">
+                    <div class="image-name">logo.png</div>
+                    <div class="image-meta">Size: 17 KB</div>
+                    <div class="image-meta">Use: Main company logo, website header, email signatures</div>
+                    <div class="image-url" onclick="copyToClipboard(this, 'https://kenco.nz/assets/images/logo.png')">
+                        https://kenco.nz/assets/images/logo.png
+                    </div>
+                </div>
+                <button class="copy-btn" onclick="copyToClipboard(this, 'https://kenco.nz/assets/images/logo.png')">Copy URL</button>
+            </div>
+            
+            <div class="image-card">
+                <div class="image-preview">
+                    <img src="endurocide-logo.jpg" alt="Endurocide Logo">
+                </div>
+                <div class="image-info">
+                    <div class="image-name">endurocide-logo.jpg</div>
+                    <div class="image-meta">Size: 55 KB</div>
+                    <div class="image-meta">Use: Product marketing, email campaigns, presentations</div>
+                    <div class="image-url" onclick="copyToClipboard(this, 'https://kenco.nz/assets/images/endurocide-logo.jpg')">
+                        https://kenco.nz/assets/images/endurocide-logo.jpg
+                    </div>
+                </div>
+                <button class="copy-btn" onclick="copyToClipboard(this, 'https://kenco.nz/assets/images/endurocide-logo.jpg')">Copy URL</button>
+            </div>
+            
+            <div class="image-card">
+                <div class="image-preview">
+                    <img src="shadecare-logo.png" alt="ShadeCare Logo">
+                </div>
+                <div class="image-info">
+                    <div class="image-name">shadecare-logo.png</div>
+                    <div class="image-meta">Size: 11 KB</div>
+                    <div class="image-meta">Use: Product marketing, email campaigns, presentations</div>
+                    <div class="image-url" onclick="copyToClipboard(this, 'https://kenco.nz/assets/images/shadecare-logo.png')">
+                        https://kenco.nz/assets/images/shadecare-logo.png
+                    </div>
+                </div>
+                <button class="copy-btn" onclick="copyToClipboard(this, 'https://kenco.nz/assets/images/shadecare-logo.png')">Copy URL</button>
+            </div>
+            
+            <div class="image-card">
+                <div class="image-preview">
+                    <img src="kenco_email_sig.png" alt="Kenco Email Signature">
+                </div>
+                <div class="image-info">
+                    <div class="image-name">kenco_email_sig.png</div>
+                    <div class="image-meta">Size: 2.7 KB</div>
+                    <div class="image-meta">Use: Email signatures, combined branding</div>
+                    <div class="image-url" onclick="copyToClipboard(this, 'https://kenco.nz/assets/images/kenco_email_sig.png')">
+                        https://kenco.nz/assets/images/kenco_email_sig.png
+                    </div>
+                </div>
+                <button class="copy-btn" onclick="copyToClipboard(this, 'https://kenco.nz/assets/images/kenco_email_sig.png')">Copy URL</button>
+            </div>
+        </div>
+        
+        <footer>
+            <p>&copy; 2025 Kenco Ltd. All rights reserved. | <a href="https://kenco.nz" style="color: #0d9488; text-decoration: none;">Visit Website</a></p>
+        </footer>
+    </div>
+    
+    <script>
+        function copyToClipboard(element, text) {
+            navigator.clipboard.writeText(text).then(function() {
+                // Visual feedback
+                const originalText = element.textContent;
+                element.textContent = '✓ Copied!';
+                element.classList.add('copied');
+                
+                setTimeout(function() {
+                    element.textContent = originalText;
+                    element.classList.remove('copied');
+                }, 2000);
+            }).catch(function(err) {
+                console.error('Failed to copy:', err);
+                alert('Failed to copy URL. Please copy manually.');
+            });
+        }
+    </script>
+</body>
+</html>
