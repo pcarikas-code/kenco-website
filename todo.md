@@ -19,3 +19,12 @@
 - [x] Create RENAME_SCRIPTS.md guide for production server
 - [ ] Rename build-docker.sh to build.sh on production server (manual step)
 - [ ] Rename deploy-docker.sh to deploy.sh on production server (manual step)
+
+## Add Docker Configuration (Current Task)
+- [ ] Fetch Dockerfile from scope-manus-machine repository
+- [ ] Fetch docker-compose.yml if it exists
+- [ ] Fetch .dockerignore if it exists
+- [ ] Create build.sh and deploy.sh scripts
+- [ ] Test Docker build locally
+- [ ] Push to pcarikas-code/kenco-website
+- [ ] Update production server to use pcarikas-code repo
