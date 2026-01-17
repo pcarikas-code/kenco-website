@@ -7,6 +7,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { useState } from "react";
 import { toast } from "sonner";
+import { trpc } from "@/lib/trpc";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -18,13 +19,37 @@ export default function Contact() {
   });
   const [submittedAt, setSubmittedAt] = useState<number | null>(null);
 
+  const submitMutation = trpc.contact.submit.useMutation({
+    onSuccess: (data) => {
+      toast.success(data.message);
+      setFormData({ name: "", email: "", phone: "", message: "", website: "" });
+    },
+    onError: (error) => {
+      // Parse validation errors from tRPC
+      let errorMessage = "Failed to send message. Please try again.";
+      
+      try {
+        // Check if it's a validation error
+        const errorData = JSON.parse(error.message);
+        if (Array.isArray(errorData) && errorData.length > 0) {
+          // Extract the first validation error message
+          errorMessage = errorData[0].message || errorMessage;
+        }
+      } catch {
+        // If parsing fails, use the original error message
+        errorMessage = error.message || errorMessage;
+      }
+      
+      toast.error(errorMessage);
+    },
+  });
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
     // Honeypot spam check
     if (formData.website) {
       // Bot filled the honeypot field - silently reject
-      console.log("Spam detected via honeypot");
       return;
     }
     
@@ -35,18 +60,15 @@ export default function Contact() {
       return;
     }
     
-    // Time-based check (form must be filled for at least 2 seconds)
-    const formStartTime = sessionStorage.getItem('formStartTime');
-    if (formStartTime && now - parseInt(formStartTime) < 2000) {
-      // Likely a bot - silently reject
-      console.log("Spam detected: form filled too quickly");
-      return;
-    }
-    
     setSubmittedAt(now);
-    toast.success("Thank you for your message! We'll be in touch soon.");
-    setFormData({ name: "", email: "", phone: "", message: "", website: "" });
-    sessionStorage.removeItem('formStartTime');
+    
+    // Submit via tRPC
+    submitMutation.mutate({
+      name: formData.name,
+      email: formData.email,
+      phone: formData.phone || undefined,
+      message: formData.message,
+    });
   };
 
   return (
@@ -79,11 +101,6 @@ export default function Contact() {
                   <form 
                     onSubmit={handleSubmit} 
                     className="space-y-6"
-                    onFocus={() => {
-                      if (!sessionStorage.getItem('formStartTime')) {
-                        sessionStorage.setItem('formStartTime', Date.now().toString());
-                      }
-                    }}
                   >
                     <div className="space-y-2">
                       <Label htmlFor="name">Name *</Label>
