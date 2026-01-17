@@ -74,9 +74,10 @@
 - [x] Add scope-manus-machine as remote
 - [x] Fetch from scope-manus-machine
 - [x] Merge manus/main into pcarikas-code repo
-- [ ] Resolve merge conflicts
-- [ ] Test merged codebase
-- [ ] Push to pcarikas-code/kenco-website
+- [x] Resolve merge conflicts
+- [x] Rename build-docker.sh to build.sh
+- [x] Remove deploy-docker.sh (use deploy.sh instead)
+- [x] Push to pcarikas-code/kenco-website
 - [ ] Update production server to use unified repo
 - [ ] Deploy assets folder to production
 

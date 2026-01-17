@@ -1,75 +1,44 @@
 #!/bin/bash
 
-# Kenco Website Deployment Script for Plesk
-# This script automates the deployment process
+# Docker Deployment Script
+# This script stops, removes, and recreates the Docker container
 
 set -e  # Exit on error
 
-echo "🚀 Starting Kenco Website Deployment..."
+# Get container and image name from first argument or use default
+CONTAINER_NAME="${1:-kenco-website}"
+IMAGE_NAME="${CONTAINER_NAME}"
 
-# Configuration
-APP_DIR="/var/www/vhosts/kenco.nz/httpdocs/kenco-app"
-DOMAIN="kenco.nz"
-
-# Colors for output
-GREEN='\033[0;32m'
-YELLOW='\033[1;33m'
-RED='\033[0;31m'
-NC='\033[0m' # No Color
-
-# Change to app directory
-cd "$APP_DIR" || {
-    echo -e "${RED}❌ Failed to change to app directory${NC}"
+# Check if .env file exists
+if [ ! -f .env ]; then
+    echo "Error: .env file not found!"
     exit 1
-}
-
-echo -e "${YELLOW}📂 Working directory: $(pwd)${NC}"
-
-# Pull latest code from GitHub
-echo -e "${YELLOW}📥 Pulling latest code from GitHub...${NC}"
-git pull origin main || {
-    echo -e "${RED}❌ Git pull failed${NC}"
-    exit 1
-}
-echo -e "${GREEN}✅ Code updated${NC}"
-
-# Install dependencies
-echo -e "${YELLOW}📦 Installing dependencies...${NC}"
-npm install --production=false || {
-    echo -e "${RED}❌ npm install failed${NC}"
-    exit 1
-}
-echo -e "${GREEN}✅ Dependencies installed${NC}"
-
-# Build application
-echo -e "${YELLOW}🔨 Building application...${NC}"
-npm run build || {
-    echo -e "${RED}❌ Build failed${NC}"
-    exit 1
-}
-echo -e "${GREEN}✅ Build completed${NC}"
-
-# Run database migrations
-echo -e "${YELLOW}🗄️  Running database migrations...${NC}"
-npm run db:push || {
-    echo -e "${YELLOW}⚠️  Database migrations failed (may be expected if no changes)${NC}"
-}
-echo -e "${GREEN}✅ Database updated${NC}"
-
-# Restart Node.js application
-echo -e "${YELLOW}🔄 Restarting Node.js application...${NC}"
-if command -v plesk &> /dev/null; then
-    plesk bin site --update "$DOMAIN" -nodejs-restart || {
-        echo -e "${YELLOW}⚠️  Plesk restart command failed, trying alternative...${NC}"
-        # Alternative: restart via systemd if Plesk command fails
-        if systemctl list-units --type=service | grep -q "plesk-nodejs-$DOMAIN"; then
-            systemctl restart "plesk-nodejs-$DOMAIN"
-        fi
-    }
-else
-    echo -e "${YELLOW}⚠️  Plesk CLI not available, please restart manually${NC}"
 fi
-echo -e "${GREEN}✅ Application restarted${NC}"
 
-echo -e "${GREEN}🎉 Deployment completed successfully!${NC}"
-echo -e "${GREEN}🌐 Visit: https://$DOMAIN${NC}"
+echo "Deploying ${CONTAINER_NAME}..."
+
+# Stop existing container if running
+if docker ps -q -f name=${CONTAINER_NAME} > /dev/null 2>&1; then
+    echo "Stopping existing container..."
+    docker stop ${CONTAINER_NAME}
+fi
+
+# Remove existing container if exists
+if docker ps -aq -f name=${CONTAINER_NAME} > /dev/null 2>&1; then
+    echo "Removing existing container..."
+    docker rm ${CONTAINER_NAME}
+fi
+
+# Run new container
+echo "Starting new container..."
+docker run -d \
+  --name ${CONTAINER_NAME} \
+  --restart unless-stopped \
+  -p 3000:3000 \
+  --env-file .env \
+  ${IMAGE_NAME}:latest
+
+echo "✅ Container deployed successfully: ${CONTAINER_NAME}"
+echo ""
+echo "Check status with: docker ps"
+echo "View logs with: docker logs ${CONTAINER_NAME}"
